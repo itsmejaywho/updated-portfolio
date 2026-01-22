@@ -6,7 +6,7 @@ function EducationDiv({ direction,position, school, sy, location, reverse, margi
         <>
             <div className={`w-full h-[25%] text-black  flex overflow-hidden  justify-between sm:justify-center  sm:gap-4 ${reverse} `}>
                 <motion.div
-                className={`h-full w-[49%] bg-[#d4a373] flex flex-col pl-4  rounded-lg items-start justify-center sm:w-[40%] lg:w-[30%] md:w-[40%] py-[20px] ${margin} `}
+                className={`h-full w-[49%] bg-[#d4a373] flex flex-col pl-4  rounded-lg items-start justify-center sm:w-[40%] lg:w-[30%] md:w-[40%] py-5 ${margin} `}
                     initial={{ x: direction, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     viewport={{ once: false, amount: 0.2 }} 

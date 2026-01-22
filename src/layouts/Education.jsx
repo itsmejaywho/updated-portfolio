@@ -27,10 +27,10 @@ function Education(){
                     </motion.p>
                 </div>
                 <div className='h-[85%] w-full flex flex-col '>
-                    <EducationDiv direction={-100} school='Dona Pilar C Gonzaga Elementary School' sy='2009 - 2015' location='Mandaluyong City' position='Elementary'/>
-                    <EducationDiv direction={100} reverse={'flex-row-reverse'} school='Mandaluyong High School' sy='2015 - 2019' location='Mandaluyong City' position='Junior High School'/>
-                    <EducationDiv direction={-100} school='San Felipe Neri Parochial School' sy='2019 - 2021' location='Mandaluyong City' position='Senior High School' />
-                    <EducationDiv direction={100} reverse={'flex-row-reverse'} school='Technological University of the Philippines' sy='2022 - 2026' location='Manila City' position='College'/>
+                    <EducationDiv direction={-100}  school='Technological University of the Philippines' sy='2022 - 2026' location='Manila City' position='College'/>
+                    <EducationDiv direction={100} reverse={'flex-row-reverse'} school='San Felipe Neri Parochial School' sy='2019 - 2021' location='Mandaluyong City' position='Senior High School' />
+                    <EducationDiv direction={-100}  school='Mandaluyong High School' sy='2015 - 2019' location='Mandaluyong City' position='Junior High School'/>
+                    <EducationDiv direction={100} reverse={'flex-row-reverse'} school='Dona Pilar C Gonzaga Elementary School' sy='2009 - 2015' location='Mandaluyong City' position='Elementary'/>
                 </div>
             </div>  
         </>

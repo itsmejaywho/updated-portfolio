@@ -33,7 +33,7 @@ function Navigation() {
 
     return(
         <>
-        <div className={`mynav h-[80px] w-full flex border-b border-[#182b42] sticky top-0 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+        <div className={`mynav h-20 w-full flex border-b border-[#182b42] sticky top-0 z-50 transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
             <div className="w-[50%] sm:text-[1.1rem] md:text-[1.2rem]  h-full flex items-center gap-1 md:w-[20%] md:justify-end lg:justify-center">
                 <p className="p-1 bg-white text-black font-bold rounded-[10px]">
                     {'{R}'}
