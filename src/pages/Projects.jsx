@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { fadeInUp } from '../utils/motion';
 import { Link } from 'react-router-dom';
 
@@ -33,39 +33,49 @@ const projects = [
     },
 ];
 
-function Project(){
-    const displayedProjects = projects.slice(0, 3);
+function Projects() {
+    return (
+        <div
+            className="min-h-screen py-20 px-4"
+            style={{ background: 'var(--bg-primary)', color: 'var(--text-primary)' }}
+        >
+            <div className="max-w-6xl mx-auto">
+                <Link
+                    to="/"
+                    className="inline-flex items-center gap-2 text-[.85rem] mb-10 transition-colors duration-200"
+                    style={{ color: 'var(--text-secondary)' }}
+                >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                    Back to Home
+                </Link>
 
-    return(
-        <div className="w-full py-16 px-4" style={{ borderTop: '1px solid var(--section-border)' }}>
-            <div className="max-w-5xl mx-auto">
-                <motion.h2
-                    className='text-[1.8rem] sm:text-[2rem] md:text-[2.5rem] font-bold text-center'
+                <motion.h1
+                    className="text-[2rem] sm:text-[2.5rem] md:text-[3rem] font-bold"
                     {...fadeInUp}
                 >
-                    {'Projects'}
-                </motion.h2>
+                    All Projects
+                </motion.h1>
                 <motion.p
-                    className='text-[.8rem] sm:text-[.85rem] md:text-[.95rem] text-center mt-3 max-w-2xl mx-auto'
+                    className="text-[.85rem] sm:text-[.95rem] mt-3 max-w-2xl"
                     style={{ color: 'var(--text-secondary)' }}
                     {...fadeInUp}
                 >
-                    This project presents a visual narrative of my journey, passions, and creative work. Each piece highlights my dedication, attention to detail, and commitment to producing meaningful and high-quality outcomes.
+                    A complete collection of my work — from web apps to full-stack platforms. Each project reflects my growth and passion for building meaningful digital experiences.
                 </motion.p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
-                    {displayedProjects.map((project, i) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                    {projects.map((project, i) => (
                         <motion.div
                             key={i}
                             className="rounded-2xl overflow-hidden flex flex-col"
                             style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)' }}
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.3 }}
-                            transition={{ duration: 0.5, delay: i * 0.15 }}
+                            viewport={{ once: false, amount: 0.2 }}
+                            transition={{ duration: 0.5, delay: i * 0.1 }}
                         >
                             {/* Preview */}
-                            <div className="relative h-80 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
+                            <div className="relative h-52 overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
                                 <iframe
                                     src={project.link}
                                     title={project.title}
@@ -75,15 +85,15 @@ function Project(){
                             </div>
 
                             {/* Content */}
-                            <div className="p-6 flex flex-col flex-1">
+                            <div className="p-5 flex flex-col flex-1">
                                 <h3
-                                    className="text-[1.1rem] sm:text-[1.2rem] font-bold"
+                                    className="text-[1.05rem] sm:text-[1.15rem] font-bold"
                                     style={{ color: project.color }}
                                 >
                                     {project.title}
                                 </h3>
                                 <p
-                                    className="text-[.78rem] sm:text-[.85rem] mt-2 flex-1"
+                                    className="text-[.75rem] sm:text-[.82rem] mt-2 flex-1"
                                     style={{ color: 'var(--text-secondary)' }}
                                 >
                                     {project.description}
@@ -115,23 +125,9 @@ function Project(){
                         </motion.div>
                     ))}
                 </div>
-
-                <motion.div
-                    className="flex justify-center mt-10"
-                    {...fadeInUp}
-                >
-                    <Link
-                        to="/projects"
-                        className="inline-flex items-center gap-2 px-6 py-2.5 text-[.85rem] font-medium rounded-full transition-colors duration-200 hover:bg-[#d4a373] hover:text-black"
-                        style={{ border: '1px solid var(--card-border)', color: 'var(--text-primary)' }}
-                    >
-                        Read More
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-                    </Link>
-                </motion.div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Project;
+export default Projects;

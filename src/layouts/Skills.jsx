@@ -1,83 +1,80 @@
-import { motion } from "framer-motion";
-import SkillsDiv from '../components/SkillsDiv'
-import OtherSkills from '../components/OtherSkills'
-import TailwindLogo from '../assests/tailwind.svg'
-import ReactLogo from '../assests/react.svg'
-import SupabaseLogo from '../assests/supabase.svg'
-import Mysql from '../assests/mysql.svg'
-import HTML from '../assests/html.svg'
-import Javascript  from '../assests/javascript.svg'
-import Node  from '../assests/node.svg'
-import Css  from '../assests/css.svg'
-import Git  from '../assests/github.svg'
-import Java  from '../assests/java.svg'
-import Cplus  from '../assests/c++.svg'
+﻿import { motion } from "framer-motion";
+import { fadeInUp } from '../utils/motion';
+import TailwindLogo from '../assets/tailwind.svg'
+import ReactLogo from '../assets/react.svg'
+import SupabaseLogo from '../assets/supabase.svg'
+import Mysql from '../assets/mysql.svg'
+import HTML from '../assets/html.svg'
+import Javascript from '../assets/javascript.svg'
+import Node from '../assets/node.svg'
+import Css from '../assets/css.svg'
+import Git from '../assets/github.svg'
+import Java from '../assets/java.svg'
+import Cplus from '../assets/c++.svg'
+import ML from '../assets/machinelearning.svg'
+import Postgres from '../assets/postgresql.svg'
+import FastAPI from '../assets/fastapi.svg'
+import Flask from '../assets/flask.svg'
+
+const skills = [
+    { name: 'React', logo: ReactLogo },
+    { name: 'JavaScript', logo: Javascript },
+    { name: 'HTML5', logo: HTML },
+    { name: 'CSS', logo: Css },
+    { name: 'Tailwind CSS', logo: TailwindLogo },
+    { name: 'Node.js', logo: Node },
+    { name: 'Supabase', logo: SupabaseLogo },
+    { name: 'MySQL', logo: Mysql },
+    { name: 'Git', logo: Git },
+    { name: 'Java', logo: Java },
+    { name: 'C++', logo: Cplus },
+    { name: 'Machine Learning', logo: ML },
+    { name: 'PostgreSQL', logo: Postgres },
+    { name: 'FastAPI', logo: FastAPI },
+    { name: 'Flask', logo: Flask },
+];
 
 function Skills(){
     return(
-        <>
-        <div className=" w-full flex flex-col p-4 border-t border-[#050a0f] ">
-                <div className='h-[15%] w-full flex flex-col items-center gap-2 '>
-                    <motion.p 
-                        className='text-[1.2rem] lg:text-[1.4rem] font-bold'
-                        initial={{ y: 100, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: false, amount: 0.2 }} 
-                        transition={{ duration: 0.6 }}
+        <div className="w-full flex flex-col items-center py-16 px-4">
+            <motion.h2
+                className='text-[1.8rem] sm:text-[2rem] md:text-[2.5rem] font-bold text-center'
+                {...fadeInUp}
+            >
+                Technical Expertise
+            </motion.h2>
+            <motion.p
+                className='text-[.8rem] sm:text-[.85rem] md:text-[.95rem] text-center mt-3 max-w-xl'
+                style={{ color: 'var(--text-secondary)' }}
+                {...fadeInUp}
+            >
+                A refined selection of my proficiency in modern development tools and technologies
+            </motion.p>
+
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-12 sm:gap-14 mt-12 max-w-4xl">
+                {skills.map((skill, i) => (
+                    <motion.div
+                        key={skill.name}
+                        className="flex flex-col items-center gap-2 w-20 h-20 sm:w-24 sm:h-24 justify-center rounded-lg cursor-pointer transition-colors duration-200 hover:bg-[var(--skill-hover)]"
+                        initial={{ opacity: 0, y: 30, scale: 0.8 }}
+                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                        viewport={{ once: false, amount: 0.8 }}
+                        transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
                     >
-                        What I do
-                    </motion.p>
-                    <motion.p 
-                        className='text-[.6rem]  lg:text-[.8rem] md:text-[.7rem] text-center w-[90%] lg:w-[70%]'
-                        initial={{ y: 100, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        viewport={{ once: false, amount: 0.2 }} 
-                        transition={{ duration: 0.6 }}
-                    >
-                        I’m a graduating student with a passion for web development, seeking an internship to sharpen my skills and gain hands-on industry experience.                    
-                    </motion.p>
-                </div>
+                        <img src={skill.logo} alt={skill.name} className="w-10 h-10 sm:w-12 sm:h-12" />
+                        <span className="text-[.65rem] sm:text-[.75rem] text-center" style={{ color: 'var(--text-secondary)' }}>{skill.name}</span>
+                    </motion.div>
+                ))}
+            </div>
 
-                <div className=" h-[85%]  flex flex-col lg:justify-center lg:flex-row gap-7 mt-10  w-full">
-                    <div className=" w-full  flex  flex-col gap-3 lg:w-[50%] lg:items-end  ">
-                        <motion.p
-                                className="text-[.9rem] font-bold w-full text-center mb-2"
-                                initial={{ y: 100, opacity: 0 }}
-                                whileInView={{ y: 0, opacity: 1 }}
-                                viewport={{ once: false, amount: 0.2 }} 
-                                transition={{ duration: 0.6 }}
-                        
-                        >Programming / Library Skills</motion.p>
-                        <SkillsDiv width='70%' logo={ReactLogo} name='ReactJS'></SkillsDiv>
-                        <SkillsDiv width='80%' logo={TailwindLogo} height="h-4" name='TailwindCss'></SkillsDiv>
-                        <SkillsDiv width='60%' logo={SupabaseLogo} name='Supabase' height="h-5"></SkillsDiv>
-                        <SkillsDiv width='60%' logo={Mysql} name='MySql'></SkillsDiv>
-                        <SkillsDiv width='75%' logo={Node} name='NodeJS'></SkillsDiv>
-                        <SkillsDiv width='60%' logo={Git} name='Git'></SkillsDiv>
-                        <SkillsDiv width='85%' logo={HTML} name='HTML5'></SkillsDiv>
-                        <SkillsDiv width='85%' logo={Javascript} name='JavaScript'></SkillsDiv>
-                        <SkillsDiv width='85%' logo={Css} name='Css'></SkillsDiv>
-                        <SkillsDiv width='25%' logo={Java} name='Java'></SkillsDiv>
-                        <SkillsDiv width='25%' logo={Cplus} name='C++' height="h-5"></SkillsDiv>
-                    </div>
-                    <div className="hidden lg:flex  border-2 border-white">
-
-                    </div>
-                    <div className=" w-full lg:w-[50%] flex gap-4 flex-col ">
-                        <motion.p
-                                className="text-[.9rem] font-bold w-full text-center mb-2"
-                                initial={{ y: 100, opacity: 0 }}
-                                whileInView={{ y: 0, opacity: 1 }}
-                                viewport={{ once: false, amount: 0.2 }} 
-                                transition={{ duration: 0.6 }}
-                        
-                        >Other Skills</motion.p>
-
-                        <OtherSkills></OtherSkills>
-                    </div>
-                </div>
+            <motion.p
+                className='text-[.75rem] sm:text-[.8rem] italic text-center mt-12'
+                style={{ color: 'var(--text-muted)' }}
+                {...fadeInUp}
+            >
+                Constantly refining and expanding my technical skillset
+            </motion.p>
         </div>
-        </>
     )
 }
 

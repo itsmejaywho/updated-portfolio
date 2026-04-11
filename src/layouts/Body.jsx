@@ -1,63 +1,50 @@
 import { Typewriter, Cursor } from 'react-simple-typewriter'
-import BodyButton from '../components/BodyButton'
-import Phone from '../assests/phone.svg'
-import Location from '../assests/location.svg'
-import Message from '../assests/message.svg'
-import File from '../assests/file.svg'
-import Resume from '../assests/resume.pdf'
-import Me from '../assests/me.jpg'
-import '../styles/hexagon.css'
 
 function Body(){
     return(
-        <>
-            <div className="h-screen flex flex-col w-full md:flex-row  ">
-                <div className='h-[55%] flex gap-2 flex-col md:h-full md:w-[55%] justify-center md:items-start px-4 md:px-8 md:gap-5'> 
-                    <div className='flex flex-col gap-4'>
-                        <p className='text-[2rem] sm:text-[2.1rem] md:text-[2.2rem] lg:text-[2.3rem]'>Hi!</p>
-                        <div className='flex gap-2 items-baseline'>
-                            <p>I'm</p>
-                            <p className='text-[#d4a373] text-[1.3rem] sm:text-[1.4rem] md:text-[1.5rem] lg:text-[1.6rem] font-bold'>Richmon Jay Francisco</p>
-                        </div>
-                    </div>
-                    <div className='flex flex-col gap-4'>
-                        <p className='font-bold text-[1.2rem] sm:text-[1.3rem] md:text-[1.4rem] lg:text-[1.5rem] tracking-[2px]'>                     
-                            <Typewriter
-                            words={["Aspiring Fullstack Developer"]}
-                            loop={true}
-                            typeSpeed={90}
-                            deleteSpeed={60}
-                            delaySpeed={1400}
-                            />
-                            <Cursor cursorStyle ='|'/>
-                        </p>
-                        <p className='text-[.7rem] sm:text-[.8rem] md:text-[.9rem] lg:text-[1rem] w-[90%] '>
-                            "I am motivated by a profound passion in technology and a strong willingness to learn."
-                        </p>
-                    </div>
+        <div className="min-h-[85vh] flex flex-col items-center justify-center px-4 text-center">
+            <span className='inline-flex items-center gap-1.5 px-4 py-1.5 bg-[#d4a373] text-black text-[.7rem] font-semibold rounded-full mb-6'>
+                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 0 0-2 2v1h16V6a2 2 0 0 0-2-2H4ZM18 9H2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM4 13a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm5-1a1 1 0 1 0 0 2h1a1 1 0 1 0 0-2H9Z"/></svg>
+                The Developer
+            </span>
+            <h1 className='text-[2.5rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] font-bold leading-tight'>
+                Richmon Jay Francisco
+            </h1>
+            <p className='text-[1.5rem] sm:text-[1.8rem] md:text-[2rem] lg:text-[2.5rem] font-bold mt-2'>
+                <Typewriter
+                    words={["Aspiring Full-Stack Developer", "React Enthusiast", "UI/UX Explorer"]}
+                    loop={true}
+                    typeSpeed={80}
+                    deleteSpeed={50}
+                    delaySpeed={1500}
+                />
+                <Cursor cursorStyle='|' />
+            </p>
+            <p className='text-[.85rem] sm:text-[.95rem] md:text-[1rem] italic mt-4 max-w-xl' style={{ color: 'var(--text-secondary)' }}>
+                Crafting clean, performant & responsive web experiences using modern technologies.
+            </p>
 
-                    <div className='border-l p-1 mt-2 border-white flex flex-col gap-3'>
-                        <BodyButton message='85 Rev. Aglipay St. Poblacion Mandaluyong City' source={Location}/>
-                        <BodyButton message='63+ 9283487624' source={Phone}/>
-                        <BodyButton message='rj.frncsco@gmail.com' source={Message}/>
-                    </div>
-                    <p className='text-[.5rem] sm:text-[.6rem] md:text-[.7rem] lg:text-[.8rem]'>I created this using Vite React</p>
-                    <div className='p-2 flex gap-1 items-center bg-amber-500 w-fit rounded-[10px]'>
-                        <img src={File} alt="File" className='h-5 sm:h-6 md:h-7 ' />
-                        <a href={Resume} download="Francisco_RichmonJay_Resume.pdf" target="_blank" className='text-[.7rem]'>
-                            Download resume
-                        </a>
-                    </div>
-                    
-
-                </div>
-                <div className='h-[45%] profile flex items-center justify-center md:h-full md:w-[45%]'>
-                    <div className='hexagon'>
-                        <img src={Me} alt='Profile Picture' />
-                    </div>
-                </div>
+            <div className='flex items-center gap-4 mt-8'>
+                <a
+                    href="#skills"
+                    onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
+                    className='flex items-center gap-2 text-[.85rem] font-medium text-[#d4a373] hover:text-[#c49363] transition-colors'
+                >
+                    <span className='w-2 h-2 rounded-full bg-[#d4a373]' />
+                    Let's Connect ↓
+                </a>
+                <a
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className='flex items-center gap-2 px-5 py-2.5 text-[.85rem] font-medium rounded-full transition-colors'
+                    style={{ background: 'var(--text-primary)', color: 'var(--bg-primary)' }}
+                >
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                    GitHub
+                </a>
             </div>
-        </>
+        </div>
     )
 }
 

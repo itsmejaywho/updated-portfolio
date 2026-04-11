@@ -1,16 +1,14 @@
 import { motion } from "framer-motion";
 import MockDiv from '../components/MockDiv'
+import { slideIn } from '../utils/motion';
 
 function EducationDiv({ direction,position, school, sy, location, reverse, margin}){
     return(
         <>
-            <div className={`w-full h-[25%] text-black  flex overflow-hidden  justify-between sm:justify-center  sm:gap-4 ${reverse} `}>
+            <div className={`w-full flex-1 text-black flex overflow-hidden justify-between sm:justify-center sm:gap-4 ${reverse} `}>
                 <motion.div
-                className={`h-full w-[49%] bg-[#d4a373] flex flex-col pl-4  rounded-lg items-start justify-center sm:w-[40%] lg:w-[30%] md:w-[40%] py-5 ${margin} `}
-                    initial={{ x: direction, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    viewport={{ once: false, amount: 0.2 }} 
-                    transition={{ duration: 1 }}
+                className={`w-[49%] bg-[#d4a373] flex flex-col pl-4 rounded-lg items-start justify-center sm:w-[40%] lg:w-[30%] md:w-[40%] py-5 ${margin} `}
+                    {...slideIn(direction)}
                 >
                     <p className="text-[.8rem] sm:text-[.9rem] lg:text-[1.1rem] md:text-[1rem] font-bold">
                         {school}

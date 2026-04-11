@@ -1,21 +1,69 @@
 @import "tailwindcss";
 
 * {
-     font-family: "Roboto Mono", monospace;
+     font-family: "Flex", sans-serif;
 }
 
 ::-webkit-scrollbar{
     @apply w-0
 }
 
+:root {
+    --bg-primary: #0d1b2a;
+    --bg-gradient-start: #1a1a1a;
+    --bg-gradient-mid: #0d1b2a;
+    --bg-gradient-end: #1b263b;
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --input-border: #4b5563;
+    --nav-bg-start: #1a1a1a;
+    --nav-bg-mid: #0d1b2a;
+    --nav-bg-end: #1b263b;
+    --pill-bg: rgba(13, 27, 42, 0.8);
+    --timeline-track: rgba(55, 65, 81, 0.4);
+    --timeline-dot-bg: #0d1b2a;
+    --edu-card-bg: rgba(212, 163, 115, 0.1);
+    --edu-card-border: rgba(212, 163, 115, 0.2);
+    --skill-hover: rgba(103, 163, 253, 0.15);
+    --section-border: #050a0f;
+}
+
+:root.light {
+    --bg-primary: #f8f9fa;
+    --bg-gradient-start: #f8f9fa;
+    --bg-gradient-mid: #ffffff;
+    --bg-gradient-end: #f0f0f0;
+    --text-primary: #1a1a2e;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --card-bg: rgba(0, 0, 0, 0.03);
+    --card-border: rgba(0, 0, 0, 0.08);
+    --input-border: #d1d5db;
+    --nav-bg-start: #ffffff;
+    --nav-bg-mid: #ffffff;
+    --nav-bg-end: #ffffff;
+    --pill-bg: rgba(255, 255, 255, 0.9);
+    --timeline-track: rgba(209, 213, 219, 0.5);
+    --timeline-dot-bg: #ffffff;
+    --edu-card-bg: rgba(212, 163, 115, 0.08);
+    --edu-card-border: rgba(212, 163, 115, 0.2);
+    --skill-hover: rgba(212, 163, 115, 0.12);
+    --section-border: #e5e7eb;
+}
+
 body, .hello {
     background: linear-gradient(
     to right,
-    #1a1a1a,
-    #0d1b2a,
-    #1b263b
+    var(--bg-gradient-start),
+    var(--bg-gradient-mid),
+    var(--bg-gradient-end)
     );
-    height: 100vh;
+    min-height: 100vh;
+    color: var(--text-primary);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 
@@ -26,10 +74,40 @@ button {
 .mynav {
     background: linear-gradient(
         to right,
-        #1a1a1a,
-        #0d1b2a,
-        #1b263b
+        var(--nav-bg-start),
+        var(--nav-bg-mid),
+        var(--nav-bg-end)
     );
+    transition: background 0.3s ease;
 }
 
+/* Contact form theme styles */
+#contact input,
+#contact textarea {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--input-border);
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+    color: var(--text-muted);
+}
+
+/* Invert white SVG icons in light mode */
+:root.light #skills img {
+    filter: brightness(0.3);
+}
+
+/* Hide scrollbar for horizontal scroll sections */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+#contact svg {
+    color: var(--text-muted);
+}
 

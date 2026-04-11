@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion'
-import Button from '../components/Button'
 
 function Menu({ setMenu }){
+    const scrollTo = (id) => {
+        setMenu(false);
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return(
         <>
         <motion.div 
@@ -22,11 +26,11 @@ function Menu({ setMenu }){
             </motion.button>
 
             <div className='flex flex-col gap-4 p-4 '>
-                <Button message='Home'/>
-                <Button message='Education'/>
-                <Button message='Skills'/>
-                <Button message='Project'/>
-                <Button message='Contact me'/>
+                <button onClick={() => scrollTo('home')}>Home</button>
+                <button onClick={() => scrollTo('education')}>Education</button>
+                <button onClick={() => scrollTo('skills')}>Skills</button>
+                <button onClick={() => scrollTo('project')}>Project</button>
+                <button onClick={() => scrollTo('home')}>Contact me</button>
             </div>
         </motion.div>
         </>
