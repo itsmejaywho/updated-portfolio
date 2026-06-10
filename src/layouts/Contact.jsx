@@ -1,113 +1,134 @@
-﻿import { motion } from "framer-motion";
-import { fadeInUp } from '../utils/motion';
-import { useState } from 'react';
+import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { fadeInUp } from '../utils/motion'
 
-function Contact(){
-    const [copied, setCopied] = useState('');
+const contactCards = [
+    {
+        title: 'Email me',
+        description: 'Send a message directly to my inbox.',
+        value: 'rj.frncsco@gmail.com',
+        href: 'mailto:rj.frncsco@gmail.com',
+        icon: Mail,
+    },
+    {
+        title: 'Call me',
+        description: 'Available for project and collaboration talks.',
+        value: '+63 928 348 7624',
+        href: 'tel:+639283487624',
+        icon: Phone,
+    },
+    {
+        title: 'Visit me',
+        description: 'Based in Mandaluyong City, Philippines.',
+        value: 'View on Google Maps',
+        href: 'https://www.google.com/maps/search/?api=1&query=85+Rev.+Aglipay+St.+Poblacion,+Mandaluyong+City',
+        icon: MapPin,
+    },
+    {
+        title: 'Message me',
+        description: 'Reach out through Facebook Messenger.',
+        value: 'Open Facebook',
+        href: 'https://www.facebook.com/rj.francisco.353250/',
+        icon: MessageCircle,
+    },
+]
 
-    const copyToClipboard = (text, label) => {
-        navigator.clipboard.writeText(text);
-        setCopied(label);
-        setTimeout(() => setCopied(''), 2000);
-    };
+const socials = [
+    {
+        label: 'GitHub',
+        href: 'https://github.com/richmonjaydev',
+        path: 'M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12',
+    },
+    {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/richmonjaydev/',
+        path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z',
+    },
+    {
+        label: 'Facebook',
+        href: 'https://www.facebook.com/rj.francisco.353250/',
+        path: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z',
+    },
+]
 
-    return(
-        <div className="w-full py-16 px-4">
-            <div className="max-w-4xl mx-auto rounded-2xl p-8 sm:p-12" style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)' }}>
-                <div className="flex flex-col lg:flex-row gap-12">
-                    {/* Left - Contact Info */}
-                    <motion.div className="flex-1" {...fadeInUp}>
-                        <h2 className="text-[1.8rem] sm:text-[2rem] md:text-[2.5rem] font-bold">
-                            Connect With Me
-                        </h2>
-                        <p className="text-[.85rem] sm:text-[.95rem] mt-3 max-w-sm" style={{ color: 'var(--text-secondary)' }}>
-                            Have a project in mind or a question? Reach out and let's turn your ideas into reality.
-                        </p>
-
-                        <div className="flex flex-col gap-4 mt-8">
-                            <div className="flex items-center gap-3">
-                                <svg className="w-5 h-5  shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                                <span className="text-[.85rem] sm:text-[.95rem] ">rj.frncsco@gmail.com</span>
-                                <button
-                                    onClick={() => copyToClipboard('rj.frncsco@gmail.com', 'email')}
-                                    className=" hover: transition-colors"
-                                    title="Copy email"
-                                >
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                                </button>
-                                {copied === 'email' && <span className="text-[.65rem] text-[#d4a373]">Copied!</span>}
-                            </div>
-
-                            <div className="flex items-center gap-3">
-                                <svg className="w-5 h-5  shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                                <span className="text-[.85rem] sm:text-[.95rem] ">+63 928 348 7624</span>
-                                <button
-                                    onClick={() => copyToClipboard('+639283487624', 'phone')}
-                                    className=" hover: transition-colors"
-                                    title="Copy phone"
-                                >
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-                                </button>
-                                {copied === 'phone' && <span className="text-[.65rem] text-[#d4a373]">Copied!</span>}
-                            </div>
-
-                            <div className="flex items-center gap-3">
-                                <svg className="w-5 h-5  shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                                <span className="text-[.85rem] sm:text-[.95rem] ">85 Rev. Aglipay St. Poblacion, Mandaluyong City</span>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Right - Contact Form */}
-                    <motion.form
-                        className="flex-1 flex flex-col gap-4"
-                        {...fadeInUp}
-                        onSubmit={(e) => e.preventDefault()}
-                    >
-                        <div className="flex items-center gap-3 pb-3">
-                            <svg className="w-4 h-4  shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                            <input
-                                type="text"
-                                placeholder="Name"
-                                className="w-full bg-transparent text-[.85rem]   outline-none"
-                            />
-                        </div>
-                        <div className="flex items-center gap-3 pb-3">
-                            <svg className="w-4 h-4  shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                className="w-full bg-transparent text-[.85rem]   outline-none"
-                            />
-                        </div>
-                        <div className="flex items-center gap-3 pb-3">
-                            <svg className="w-4 h-4  shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
-                            <input
-                                type="text"
-                                placeholder="Subject"
-                                className="w-full bg-transparent text-[.85rem]   outline-none"
-                            />
-                        </div>
-                        <div className="pb-3">
-                            <textarea
-                                placeholder="Please Drop Your Short Message..."
-                                rows={4}
-                                className="w-full bg-transparent text-[.85rem]   outline-none resize-none"
-                            />
-                        </div>
-                        <button
-                            type="submit"
-                            className="mt-2 w-full flex items-center justify-center gap-2 bg-[#d4a373] text-black font-medium text-[.85rem] py-3 rounded-lg hover:bg-[#c49363] transition-colors"
-                        >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
-                            Send Message
-                        </button>
-                    </motion.form>
-                </div>
+function Contact() {
+    return (
+        <section className="relative overflow-hidden px-4 pb-16 pt-12">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] opacity-35">
+                <div className="h-full w-full bg-[linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:64px_64px]" />
             </div>
-        </div>
+
+            <div className="relative mx-auto max-w-6xl">
+                <motion.div className="mx-auto max-w-3xl text-center" {...fadeInUp}>
+                    <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/8 text-[#d4a373]">
+                        <MessageCircle size={22} />
+                    </div>
+                    <h1 className="text-[2.3rem] font-black leading-tight text-white sm:text-[3rem]">
+                        Contact me
+                    </h1>
+                    <p className="mt-3 text-sm leading-7 text-white/65 sm:text-base">
+                        Let me know how I can help. I&apos;m open to projects, collaboration, and developer opportunities.
+                    </p>
+                </motion.div>
+
+                <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                    {contactCards.map(({ title, description, value, href, icon: Icon }, index) => (
+                        <motion.a
+                            key={title}
+                            href={href}
+                            target={href.startsWith('http') ? '_blank' : undefined}
+                            rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            className="group flex min-h-[13rem] flex-col justify-between rounded-lg border border-white/12 bg-black/35 p-5 text-white shadow-[0_18px_44px_rgba(0,0,0,0.25)] backdrop-blur-md transition-transform hover:-translate-y-1 hover:border-[#d4a373]/60"
+                            initial={{ opacity: 0, y: 28 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: false, amount: 0.25 }}
+                            transition={{ duration: 0.45, delay: index * 0.08 }}
+                        >
+                            <div className="flex h-9 w-9 items-center justify-center rounded-md border border-white/12 bg-white text-black">
+                                <Icon size={17} />
+                            </div>
+
+                            <div>
+                                <h2 className="text-base font-bold">{title}</h2>
+                                <p className="mt-2 text-sm leading-6 text-white/62">{description}</p>
+                                <span className="mt-4 inline-block text-sm font-bold text-white underline decoration-white/45 underline-offset-4 transition-colors group-hover:text-[#d4a373]">
+                                    {value}
+                                </span>
+                            </div>
+                        </motion.a>
+                    ))}
+                </div>
+
+                <motion.div
+                    className="mt-10 flex flex-col items-center justify-between gap-5 rounded-lg border border-white/12 bg-black/30 px-5 py-5 backdrop-blur-md sm:flex-row"
+                    {...fadeInUp}
+                >
+                    <div>
+                        <h2 className="text-lg font-bold text-white">Socials</h2>
+                        <p className="mt-1 text-sm text-white/58">Find more of my work and updates here.</p>
+                    </div>
+
+                    <div className="flex gap-3">
+                        {socials.map(({ label, href, path }) => (
+                            <a
+                                key={label}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/8 text-white transition-colors hover:border-[#d4a373] hover:bg-[#d4a373] hover:text-black"
+                                aria-label={label}
+                                title={label}
+                            >
+                                <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d={path} />
+                                </svg>
+                            </a>
+                        ))}
+                    </div>
+                </motion.div>
+            </div>
+        </section>
     )
 }
 
-export default Contact;
-
+export default Contact

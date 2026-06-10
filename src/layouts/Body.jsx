@@ -1,51 +1,170 @@
-import { Typewriter, Cursor } from 'react-simple-typewriter'
+import { Link } from 'react-router-dom'
+import PixelCard from '../components/PixelCard'
+import Me from '../assets/me.png'
+import Resume from '../assets/resume.pdf'
 
-function Body(){
-    return(
-        <div className="min-h-[85vh] flex flex-col items-center justify-center px-4 text-center">
-            <span className='inline-flex items-center gap-1.5 px-4 py-1.5 bg-[#d4a373] text-black text-[.7rem] font-semibold rounded-full mb-6'>
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 0 0-2 2v1h16V6a2 2 0 0 0-2-2H4ZM18 9H2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9ZM4 13a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm5-1a1 1 0 1 0 0 2h1a1 1 0 1 0 0-2H9Z"/></svg>
-                The Developer
-            </span>
-            <h1 className='text-[2.5rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[4rem] font-bold leading-tight'>
-                Richmon Jay Francisco
-            </h1>
-            <p className='text-[1.5rem] sm:text-[1.8rem] md:text-[2rem] lg:text-[2.5rem] font-bold mt-2'>
-                <Typewriter
-                    words={["Aspiring Full-Stack Developer", "React Enthusiast", "UI/UX Explorer"]}
-                    loop={true}
-                    typeSpeed={80}
-                    deleteSpeed={50}
-                    delaySpeed={1500}
-                />
-                <Cursor cursorStyle='|' />
-            </p>
-            <p className='text-[.85rem] sm:text-[.95rem] md:text-[1rem] italic mt-4 max-w-xl' style={{ color: 'var(--text-secondary)' }}>
-                Crafting clean, performant & responsive web experiences using modern technologies.
-            </p>
+const quickLinks = [
+    {
+        label: 'My Projects',
+        detail: 'See all of the project I have done.',
+        path: '/projects',
+    },
+    {
+        label: 'About Me',
+        detail: 'Learn about my skill and background.',
+        path: '/skills',
+    },
+    {
+        label: 'Contact Me',
+        detail: 'Send a message directly.',
+        path: '/contact',
+    },
+]
 
-            <div className='flex items-center gap-4 mt-8'>
-                <a
-                    href="#skills"
-                    onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}
-                    className='flex items-center gap-2 text-[.85rem] font-medium text-[#d4a373] hover:text-[#c49363] transition-colors'
-                >
-                    <span className='w-2 h-2 rounded-full bg-[#d4a373]' />
-                    Let's Connect ↓
-                </a>
-                <a
-                    href="https://github.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className='flex items-center gap-2 px-5 py-2.5 text-[.85rem] font-medium rounded-full transition-colors'
-                    style={{ background: 'var(--text-primary)', color: 'var(--bg-primary)' }}
-                >
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                    GitHub
-                </a>
+const highlights = [
+    'Builds responsive React interfaces',
+    'Focused on clean UI and usability',
+    'Learns full-stack tools through projects',
+]
+
+function Body() {
+    return (
+        <div className="relative h-screen overflow-hidden px-5 py-8 sm:px-8 lg:px-14">
+            <div className="absolute left-[48%] top-0 hidden h-24 w-px rotate-[-38deg] bg-white/25 lg:block" />
+            <div className="absolute right-9 top-24 hidden h-16 w-px rotate-[28deg] bg-white/25 lg:block" />
+
+            <div className="relative mx-auto flex h-full max-w-7xl flex-col">
+                <div className="flex items-start justify-between gap-6">
+                    <Link
+                        to="/"
+                        className="border-b border-white/70 pb-1 text-sm font-medium text-white/90"
+                    >
+                        it&apos;s me
+                    </Link>
+
+                    <div className="hidden grid-cols-3 gap-5 text-left md:grid">
+                        {quickLinks.map(({ label, detail, path }) => (
+                            <Link
+                                key={label}
+                                to={path}
+                                className="group min-w-[8.5rem] border-t border-white/35 pt-3 text-white transition-colors hover:text-[#d4a373]"
+                            >
+                                <span className="flex items-center justify-between gap-3 text-xs font-bold">
+                                    {label}
+                                    <svg
+                                        className="h-3 w-3 text-white/70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path d="M7 17 17 7M9 7h8v8" />
+                                    </svg>
+                                </span>
+                                <span className="mt-1 block max-w-[9.5rem] text-[0.62rem] leading-snug text-white/55">
+                                    {detail}
+                                </span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="grid min-h-0 flex-1 items-center gap-10 pt-10 lg:grid-cols-[1fr_0.92fr] lg:items-start lg:pt-20">
+                    <div className="relative z-10 pb-10 lg:pb-0">
+                        <div className="mb-6 text-xs font-bold uppercase tracking-[0.35em] text-[#d4a373]">
+                            Hello
+                        </div>
+
+                        <div className="flex flex-wrap items-end gap-x-4 gap-y-2">
+                            <h1 className="text-[clamp(2.6rem,6vw,5.9rem)] font-light leading-[0.95] tracking-normal text-white">
+                                Hello! <span className="font-black">I&apos;m Richmon</span>
+                            </h1>
+                            <span className="mb-2 inline-flex items-center gap-3 text-lg text-white/80 sm:text-2xl">
+                                <span className="h-px w-16 bg-white/55" />
+                                Web Developer
+                                <span className="h-2 w-2 rotate-45 bg-[#d4a373]" />
+                            </span>
+                        </div>
+
+                        <p className="mt-6 max-w-xl text-sm leading-7 text-white/68">
+                            Hello! I&apos;m Richmon Jay Francisco, an aspiring full-stack developer
+                            who enjoys building clean, responsive, and human-friendly web experiences.
+                        </p>
+
+                        <ul className="mt-8 space-y-3 text-sm text-white/82">
+                            {highlights.map((item) => (
+                                <li key={item} className="flex items-center gap-3">
+                                    <span className="grid h-4 w-4 place-items-center rounded-full bg-white text-[0.62rem] font-bold text-black">
+                                        <svg
+                                            className="h-2.5 w-2.5"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="3"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path d="m5 12 4 4L19 6" />
+                                        </svg>
+                                    </span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className="mt-9 flex flex-wrap items-center gap-4">
+                            <Link
+                                to="/contact"
+                                className="rounded-full bg-white px-6 py-3 text-sm font-bold text-black transition-transform hover:-translate-y-0.5"
+                            >
+                                Let&apos;s Talk
+                            </Link>
+                            <a
+                                href={Resume}
+                                download
+                                className="inline-flex items-center gap-2 border-b border-white/35 pb-1 text-sm font-semibold text-white/88 transition-colors hover:text-[#d4a373]"
+                            >
+                                Download CV
+                                <svg
+                                    className="h-3.5 w-3.5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d="M12 5v14M19 12l-7 7-7-7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="relative flex min-h-0 -translate-y-8 items-start justify-center overflow-hidden lg:h-[calc(100vh-7.25rem)] lg:-translate-y-12">
+                        <PixelCard
+                            variant="blue"
+                            gap={8}
+                            speed={35}
+                            colors="#f8fafc,#7dd3fc,#d4a373"
+                            className="h-full w-full"
+                            noFocus
+                        >
+                            <div className="pixel-card-content flex h-full w-full items-start justify-center">
+                                <div className="absolute bottom-24 left-4 z-10 hidden h-32 w-32 rounded-full bg-black text-white shadow-2xl ring-1 ring-white/15 md:grid place-items-center">
+                                    <span className="text-3xl font-light">Hello</span>
+                                </div>
+                                <div className="absolute right-1 top-16 hidden text-7xl font-black text-white/10 lg:block">
+                                    RJ
+                                </div>
+                                <div className="absolute top-16 h-[88%] w-full rounded-t-full bg-white/8 blur-sm" />
+                                <img
+                                    src={Me}
+                                    alt="Richmon Jay Francisco"
+                                    className="relative z-10 h-[84vh] max-h-[58rem] min-h-[38rem] w-[145%] max-w-none object-cover object-top drop-shadow-[0_28px_45px_rgba(0,0,0,0.45)] sm:w-[132%] lg:h-[calc(100vh-4rem)] lg:w-[140%]"
+                                />
+                            </div>
+                        </PixelCard>
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
-export default Body;
+export default Body

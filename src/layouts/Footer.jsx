@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
-        <footer className="w-full" style={{ borderTop: '1px solid var(--section-border)' }}>
+        <footer className="relative z-[1] w-full" style={{ borderTop: '1px solid var(--section-border)' }}>
             <div className="max-w-5xl mx-auto px-6 py-12">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
                     {/* Left - Name & Description */}
@@ -19,15 +19,19 @@ function Footer() {
                             Quick Links
                         </h4>
                         <ul className="mt-3 flex flex-col gap-2">
-                            {['About', 'Skills', 'Projects'].map(link => (
-                                <li key={link}>
-                                    <a
-                                        href={link === 'Projects' ? '#project' : `#${link.toLowerCase()}`}
+                            {[
+                                { label: 'About', path: '/skills' },
+                                { label: 'Skills', path: '/skills' },
+                                { label: 'Projects', path: '/projects' },
+                            ].map(link => (
+                                <li key={link.label}>
+                                    <Link
+                                        to={link.path}
                                         className="text-[.85rem] hover:underline transition-colors"
                                         style={{ color: 'var(--text-primary)' }}
                                     >
-                                        {link}
-                                    </a>
+                                        {link.label}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
