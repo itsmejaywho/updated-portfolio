@@ -33,7 +33,7 @@ const projects = [
         role: 'Interactive Web Experience',
         description: 'A neon-styled web experience focused on bold visuals, responsive layout, and a polished presentation for an immersive browsing feel.',
         tags: ['React', 'Vite', 'UI Design'],
-        link: 'https://aboutneon.vercel.app/',
+        link: 'https://allaboutneon.com',
         color: '#f472b6',
     },
     {
