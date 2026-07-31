@@ -1,4 +1,4 @@
-import { Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
+import { Mail, MessageCircle, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { fadeInUp } from '../utils/motion'
 
@@ -16,13 +16,6 @@ const contactCards = [
         value: '+63 928 348 7624',
         href: 'tel:+639283487624',
         icon: Phone,
-    },
-    {
-        title: 'Visit me',
-        description: 'Based in Mandaluyong City, Philippines.',
-        value: 'View on Google Maps',
-        href: 'https://www.google.com/maps/search/?api=1&query=85+Rev.+Aglipay+St.+Poblacion,+Mandaluyong+City',
-        icon: MapPin,
     },
     {
         title: 'Message me',
@@ -71,7 +64,7 @@ function Contact() {
                     </p>
                 </motion.div>
 
-                <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                     {contactCards.map(({ title, description, value, href, icon: Icon }, index) => (
                         <motion.a
                             key={title}
